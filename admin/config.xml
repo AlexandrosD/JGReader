@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>	
+	<!-- Configuration -->
+	<fieldset name="configuration" label="Configuration" description="Configuration Options">
+		
+		<field name="username"
+			type="inputbox"
+			label="Your Google Email"
+			class="inputbox"
+		/>
+		
+		<field name="password"
+			type="password"
+			label="Your Google Password"
+			class="inputbox"
+		/>
+		
+	</fieldset>
+
+</config>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="List Items - Default Layout">
+		<message>J! Google Reader</message>
+	</layout>
+
+	<fields name="request">
+		<fieldset name="request">
+
+			<field name="limit" type="text"
+				label="How many items to display"
+				required="true"
+				description="How many items to display"
+			/>
+			
+			<field name="display"
+				type="list"
+				label="What to display"
+				class="inputbox"
+			>
+				<option value="starred">Starred Items</option>
+				<option value="shared">Shared Items</option>
+				<option value="tagged">Tagged Items</option>
+			</field>
+			
+			<field name="tag"
+				type="inputbox"
+				label="Tag (for tagged items)"
+				class="inputbox"
+			/>
+			
+			<field name="linkableTitle"
+				type="list"
+				label="Hyperlink Title"
+				class="inputbox"
+			>
+				<option value="1">Yes</option>
+				<option value="0">No</option>
+			</field>
+			
+			<field name="displayDate"
+				type="list"
+				label="Display Date"
+				class="inputbox"
+			>
+				<option value="1">Yes</option>
+				<option value="0">No</option>
+			</field>
+			
+			<field name="displaySummary"
+				type="list"
+				label="Display item's content"
+				class="inputbox"
+			>
+				<option value="1">Yes</option>
+				<option value="0">No</option>
+			</field>
+			
+		</fieldset>
+	</fields>
+        
+</metadata>

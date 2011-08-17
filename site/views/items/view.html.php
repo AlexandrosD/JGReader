@@ -31,6 +31,10 @@ class JGReaderViewItems extends JView
 	        	$params->displaySummary = (bool) JRequest::getInt( "displaySummary" , 1 );
 	        	$this->assignRef ( "params" , $params );
 	        	
+	        	$app = JFactory::getApplication();
+	        	$appParams = $app->getParams();
+	        	$this->assignRef ( "appParams" , $appParams );
+	        	
 				parent::display($tpl);
         	}
         	else {

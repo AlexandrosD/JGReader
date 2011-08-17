@@ -13,12 +13,10 @@ defined('_JEXEC') or die('Restricted access');
 
 JHtml::_('behavior.framework', true);
 
-$app = JFactory::getApplication();
-$appParams = $app->getParams();
 ?>
 
-<?php if ($appParams->get('show_page_heading', 1)) : ?>
-<h1><?php echo $this->escape($appParams->get('page_heading')); ?></h1>
+<?php if ($this->appParams->get('show_page_heading', 1)) : ?>
+<h1><?php echo $this->escape($this->appParams->get('page_heading')); ?></h1>
 <?php endif; ?>
 
 <div class="greader-items">
@@ -26,20 +24,19 @@ $appParams = $app->getParams();
 $counter = 0;
 $alternator = 0;
 foreach($this->items as $article): 
-$counter++;
 $alternator = $alternator-1;
 $alternator = $alternator * $alternator;
 ?>
-	<div class="greader-item-<?php echo $alternator; ?>">
-	
+	<div class="greader-item-<?php echo $alternator; ?> item-<?php echo $counter; ?>">
+		<a id="item-<?php echo $counter; ?>"></a>
 		<h3 class="greader-item-title">
-			<a onclick="$$('div.greader-item-summary')[<?php echo $counter-1; ?>].toggle();">
+			<a href="#item-<?php echo $counter; ?>" onclick="$$('div.greader-item-summary')[<?php echo $counter; ?>].toggle();">
 				<?php echo $article['title']; ?>
 			</a>
 		</h3>
 
 		<?php if ($this->params->displayDate): ?>
-		<h3 class="greader-item-date"><?php echo date('M j, Y', $article['published']); ?></h3>
+		<h3 class="greader-item-date"><?php echo JHTML::date($article['published']); ?></h3>
 		<?php endif; ?>
 		<div class="greader-item-summary">
 			<?php if(isset($article['summary']['content'])): ?>
@@ -57,7 +54,10 @@ $alternator = $alternator * $alternator;
 		</div>
 
 	</div>
-<?php endforeach; ?>
+<?php 
+$counter++;
+endforeach;
+?>
 </div>
 <script type="text/javascript">
 	$$('div.greader-item-summary').hide();

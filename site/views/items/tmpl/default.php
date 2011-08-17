@@ -11,12 +11,11 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-$app = JFactory::getApplication();
-$appParams = $app->getParams();
+
 ?>
 
-<?php if ($appParams->get('show_page_heading', 1)) : ?>
-<h1><?php echo $this->escape($appParams->get('page_heading')); ?></h1>
+<?php if ($this->appParams->get('show_page_heading', 1)) : ?>
+<h1><?php echo $this->escape($this->appParams->get('page_heading')); ?></h1>
 <?php endif; ?>
 
 <div class="greader-items">
@@ -39,7 +38,7 @@ $alternator = $alternator * $alternator;
 		<?php endif; ?>
 		</h3>
 		<?php if ($this->params->displayDate): ?>
-		<h3 class="greader-item-date"><?php echo date('M j, Y', $article['published']); ?></h3>
+		<h3 class="greader-item-date"><?php echo JHTML::date($article['published']); ?></h3>
 		<?php endif; ?>
 		<?php if ( $this->params->displaySummary ): ?>
 		<div class="greader-item-summary">

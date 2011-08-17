@@ -53,11 +53,17 @@ class JGReaderModelItems extends JModelList {
 	
 	private function _getUsername() {
 		$params = json_decode(JFactory::getApplication()->getParams());
+		if (! isset ($params->username))
+			return;
+		/* else */
 		return $params->username;
 	}
 	
 	private function _getPassword() {
 		$params = json_decode(JFactory::getApplication()->getParams());
+		if (! isset ($params->password))
+			return;
+		/* else */
 		return $params->password;
 	}
 

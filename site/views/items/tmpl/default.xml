@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="List Items - Default Layout">
-		<message>J! Google Reader</message>
+	<layout title="LIST_DEFAULT">
+		<message>COM_JGREADER</message>
 	</layout>
 
 	<fields name="request">
 		<fieldset name="request">
 
-			<field name="limit" type="text"
-				label="How many items to display"
+			<field name="limit"
+				type="text"
+				label="REQ_N_ITEMS"
 				required="true"
-				description="How many items to display"
 			/>
 			
 			<field name="display"
 				type="list"
-				label="What to display"
+				label="REQ_WHAT"
 				class="inputbox"
 			>
-				<option value="starred">Starred Items</option>
-				<option value="shared">Shared Items</option>
-				<option value="tagged">Tagged Items</option>
+				<option value="starred">ITEMS_STARRED</option>
+				<option value="shared">ITEMS_SHARED</option>
+				<option value="tagged">ITEMS_TAGGED</option>
 			</field>
 			
 			<field name="tag"
 				type="inputbox"
-				label="Tag (for tagged items)"
+				label="REQ_TAG"
 				class="inputbox"
 			/>
 			
 			<field name="linkableTitle"
 				type="list"
-				label="Hyperlink Title"
+				label="REQ_HLINK"
 				class="inputbox"
 			>
-				<option value="1">Yes</option>
-				<option value="0">No</option>
+				<option value="1">OPT_YES</option>
+				<option value="0">OPT_NO</option>
 			</field>
 			
 			<field name="displayDate"
 				type="list"
-				label="Display Date"
+				label="REQ_DATE"
 				class="inputbox"
 			>
-				<option value="1">Yes</option>
-				<option value="0">No</option>
+				<option value="1">OPT_YES</option>
+				<option value="0">OPT_NO</option>
 			</field>
 			
 			<field name="displaySummary"
 				type="list"
-				label="Display item's content"
+				label="REQ_SUMMARY"
 				class="inputbox"
 			>
-				<option value="1">Yes</option>
-				<option value="0">No</option>
+				<option value="1">OPT_YES</option>
+				<option value="0">OPT_NO</option>
 			</field>
 			
 		</fieldset>

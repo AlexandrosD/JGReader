@@ -11,7 +11,7 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-JToolBarHelper::title("Joomla! Google Reader");
+JToolBarHelper::title("Joomla! GReader");
 JToolBarHelper::preferences("com_jgreader");
 
 ?>

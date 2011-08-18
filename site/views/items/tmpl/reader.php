@@ -27,10 +27,9 @@ foreach($this->items as $article):
 $alternator = $alternator-1;
 $alternator = $alternator * $alternator;
 ?>
-	<div class="greader-item-<?php echo $alternator; ?> item-<?php echo $counter; ?>">
-		<a id="item-<?php echo $counter; ?>"></a>
+	<div class="greader-item-<?php echo $alternator; ?>" id="greader-item-<?php echo $counter; ?>">
 		<h3 class="greader-item-title">
-			<a href="#item-<?php echo $counter; ?>" onclick="$$('div.greader-item-summary')[<?php echo $counter; ?>].toggle();">
+			<a href="javascript:void(0);" onclick="$$('div.greader-item-summary')[<?php echo $counter; ?>].toggle();">
 				<?php echo $article['title']; ?>
 			</a>
 		</h3>

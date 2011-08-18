@@ -1,1 +1,19 @@
 JGReader
+Copyright (C) 2011 AlexD
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Disclaimer / Security Notice:
+This joomla extension stores your password in your site's database, it does not share your contact info nor your credentials with anyone. This extension does not collect your username or password, it just allows you to stotre it in YOUR site's database in order to fulfill its purpose, which is to retrieve your reading list's items.
+JGReader and its author(s) are not responsible for any data loss that may occur by the user of this extension.

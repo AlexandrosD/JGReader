@@ -22,7 +22,7 @@ class JGReaderModelItems extends JModelList {
 		$items = array();
 		
 		//create a new google reader instance
-		$reader = new GReader( $this->_getUsername() , $this->_getPassword() );
+		$reader = new GReader( $this->_getOAuthSignatures() );
 		
 		/* Starred items */
 		if ( $this->_getDisplayOption() == "starred" )
@@ -51,20 +51,20 @@ class JGReaderModelItems extends JModelList {
 		return JRequest::getVar("tag" , "N/A");
 	}
 	
-	private function _getUsername() {
+	private function _getOAuthSignatures() {
 		$params = json_decode(JFactory::getApplication()->getParams());
-		if (! isset ($params->username))
+		if ( isset ($params->consumer_key) && isset ($params->shared_secret) && isset ($params->oauth_secret) && isset ($params->oauth_token)) {
+			$signatures = array (
+				"consumer_key" => $params->consumer_key,
+				"shared_secret" => $params->shared_secret,
+				"oauth_secret" => $params->oauth_secret,
+				"oauth_token" => $params->oauth_token				
+			);
+			return $signatures;
+		}
+		else {
 			return;
-		/* else */
-		return $params->username;
-	}
-	
-	private function _getPassword() {
-		$params = json_decode(JFactory::getApplication()->getParams());
-		if (! isset ($params->password))
-			return;
-		/* else */
-		return $params->password;
+		}		
 	}
 
 }

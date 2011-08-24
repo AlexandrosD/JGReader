@@ -13,15 +13,9 @@ defined('_JEXEC') or die('Restricted access');
 
 JToolBarHelper::title("Joomla! GReader");
 
-?>
-<h3>Instructions</h3>
-<p>You may use the OPTIONS button on the toolbar to configure the component. Please ensure that you have provided the correct credentials in order the component to be able to communicate with Google Reader and fetch the requested data.</p>
-<br />
-<a href="index.php?option=com_jgreader&authorization=1">AUTHORIZE</a>
-<?php
-
+//Check if we're in authorization proccess.
 if ( JRequest::getInt("authorization") == 1 ) {
-	require_once 'components/com_jgreader/OAuthLib/OAuthSimple.php';
+	require_once '../components/com_jgreader/OAuthLib/OAuthSimple.php';
 	$oauthObject = new OAuthSimple();
 	
 	$scope = 'http://www.google.com/reader/api/';
@@ -98,20 +92,25 @@ if ( JRequest::getInt("authorization") == 1 ) {
 		$access_token_secret = isset ($returned_items['oauth_token_secret']) ? $returned_items['oauth_token_secret'] : NULL;
 		
 		if (!@$access_token) {
-			echo "<h1>!!!!!USER HAS NOT AUTHORIZED THIS SITE!!!!!!!</h1>";
+			echo "<h2>Authorization Failed.</h2>";
+			echo "<h3>You may either selected to deny access to your feeds or a technical error occured.</h3>";
+			echo "<p>In case you believe that a technical error is preventing your request to be fullfilled, please contact us providing the following details:</p>";
+			echo "<textarea rows='5' cols='50' readonly='1'>" . json_encode($signatures) . "</textarea>";
 		}
 		else {
-			echo "<h1>OK, USER HAS AUTHORIZED THIS SITE!!!!!!!</h1>";
+			echo "<h2>Authorization Succeed.</h2>";
 		
 			$signatures['oauth_token'] = $access_token;
 			$signatures['oauth_secret'] = $access_token_secret;
 	
 			//Store the token in databases
 			if ( ! storeSignatures($signatures) ) {
-				echo "<h1>UNABLE TO STORE TOKEN IN DATABASE</h1>";
+				echo "<h3>Error: Unable to store authorization data. Please try again.</h3>";
+				echo "<p>In case you believe that a technical error is preventing your request to be fullfilled, please contact us providing the following details:</p>";
+				echo "<textarea rows='5' cols='50' readonly='1'>" . json_encode($signatures) . "</textarea>";
 			} 
 			else {
-				echo "<h1>TOKEN STORED FOR FUTURE USE</h1>";
+				echo "<h3>Success! Authorization data stored. You may now use this component.</h3>";
 			}		
 		}
 	}
@@ -133,3 +132,12 @@ function storeSignatures($signatures) {
 
 
 ?>
+<h3>Instructions</h3>
+<p>In order this component to function correctly and fetch your Google Reader reading list items, you shall authorize it by selecting the button below. You will be redirected to Google where you can select to authorize this extension.</p>
+<form action="index.php?option=com_jgreader" method="post" name="adminForm" id="adminForm" >
+	<input type="hidden" id="authorization" name="authorization" value="1" />
+	<button type="submit">Authorize component</button>
+</form>
+<br />
+<p>For maximum security, this extension does not store your username or password, but only a security token provided by Google that can only be used by this website. This is done by using the OAuth standard. You may read more about OAuth here: <a href="http://en.wikipedia.org/wiki/OAuth" target="_blank">Wikipedia OAuth page</a></p>
+<br />

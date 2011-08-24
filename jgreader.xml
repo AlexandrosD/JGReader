@@ -7,7 +7,7 @@
         <authorUrl>http://alexd.mplofa.com</authorUrl>
         <copyright>Copyright (c) 2011 - Alexandros D</copyright>
         <license>GNU - GPL</license>
-        <version>1.0.0</version>
+        <version>1.2.0</version>
         <description>Display your Google Reader Starred, Shared, and Tagged Items</description>
         <files folder="site">
                 <filename>jgreader.php</filename>
@@ -17,7 +17,7 @@
                 <folder>models</folder>
                 <folder>language</folder>
                 <folder>gReader-Library</folder>
-		<folder>OAuthLib</folder>
+				<folder>OAuthLib</folder>
         </files>
         <administration>
                 <menu>com_jgreader</menu>
